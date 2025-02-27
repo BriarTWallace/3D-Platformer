@@ -1,28 +1,21 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "PlayerStats", menuName = "ScriptableObjects/PlayerStats", order = 1)]
+[CreateAssetMenu(fileName = "PlayerStats", menuName = "ScriptableObjects/PlayerStats")]
 public class PlayerStats : ScriptableObject
 {
-    public int maxHealth = 100;   // Max health the player can have
-    public int currentHealth;     // Current health of the player
+    public int maxHealth = 100;
+    public int currentHealth;
 
-    // Initialize health
     public void Initialize()
     {
-        currentHealth = maxHealth;
+        currentHealth = maxHealth; // Reset health when the game starts
     }
-
+    
     // Function to take damage
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
         if (currentHealth < 0) currentHealth = 0;
     }
-
-    // Function to heal the player
-    public void Heal(int amount)
-    {
-        currentHealth += amount;
-        if (currentHealth > maxHealth) currentHealth = maxHealth;
-    }
 }
+

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Hazard : MonoBehaviour
 {
-    public int damageAmount = 10;  // Amount of damage to apply to the player
+    public int damageAmount = 1;  // Amount of damage to apply to the player
 
     private void OnTriggerEnter(Collider other)
     {

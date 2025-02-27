@@ -8,7 +8,7 @@ public class Goal : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             // Load the next level or victory scene
-            SceneManager.LoadScene("NextLevel"); // Replace with your level's name
+            SceneManager.LoadScene("VictoryScene"); // Replace with your level's name
         }
     }
 }

@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem.XInput;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -26,10 +27,13 @@ public class Player : MonoBehaviour
         }
     }
 
+    private void FixedUpdate()
+    {
+        MovePlayer();
+    }
+
     private void Update()
     {
-        // Handle player movement
-        MovePlayer();
         // Handle jumping
         Jump();
 
@@ -40,15 +44,13 @@ public class Player : MonoBehaviour
         }
     }
 
+
     private void MovePlayer()
     {
         // Get input for movement
         float moveHorizontal = Input.GetAxis("Horizontal"); // A/D or Left/Right Arrow
         float moveVertical = Input.GetAxis("Vertical");     // W/S or Up/Down Arrow
 
-      
-        // Move the player in the direction of the camera
-        Vector3 movement = new Vector3(moveHorizontal, 0, moveVertical) * moveSpeed * Time.deltaTime;
 
         // Make sure the player moves based on camera orientation
         Vector3 cameraForward = Camera.main.transform.forward;
@@ -119,20 +121,7 @@ public class Player : MonoBehaviour
         
     }
 
-    //private void OnTriggerEnter(Collider other)
-    //{
-        // Check if player is colliding with a hazard
-        //if (other.CompareTag("Hazard"))
-        //{
-            //Hazard hazard = other.GetComponent<Hazard>();
-           // if (hazard != null)
-            //{
-                //TakeDamage(hazard.damageAmount);  // Apply damage from the hazard
-            //}
-        //}
-
-     
-    //}
+    
 
     // Function to apply damage to the player
    public void TakeDamage(int damage)
@@ -147,6 +136,6 @@ public class Player : MonoBehaviour
     private void GameOver()
     {
         Debug.Log("Game Over!");
-        // SceneManager.LoadScene("GameOverScene");
+        SceneManager.LoadScene("GameOver");
     }
 }
